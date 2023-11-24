@@ -28,7 +28,7 @@
                                 <button id="ver_mas" type="submit" class="bg-azul text-blanco font-semibold py-2 px-4 rounded-md hover:bg-blue-900">Ver Más</button>
                                 <script>
                                     document.getElementById('ver_mas').addEventListener('click', function() {
-                                        window.location.href = './ver_producto.php';
+                                        window.location.href = './ver_servicio.php';
                                     });
                                 </script>
                             </div>

@@ -14,6 +14,9 @@
                         <a href="./productos.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Productos</li>
                         </a>
+                        <a href="./servicios.php">
+                            <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Servicios</li>
+                        </a>
                         <a href="./emprender.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Emprende</li>
                         </a>

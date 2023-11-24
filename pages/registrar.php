@@ -4,7 +4,7 @@
         <section class="flex items-center justify-center h-full">
         <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-1/4">
           <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Registro de Usuario</h1>
-          <form action="#" method="post">
+          <form action="registrar-manejo.php" method="post">
               <div class="mb-4">
                   <label for="nombre" class="block text-blanco font-medium mb-2">Nombre:</label>
                   <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 rounded-md p-2" required>
