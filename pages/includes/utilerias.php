@@ -15,15 +15,4 @@
         //include('includes/pie.php');
         header('refresh:3;url=' . $dir);
     }
-
-    function conectar(){
-        DEFINE('SERVIDOR', 'localhost');
-        DEFINE('USUARIO', 'root');
-        DEFINE('PASSWORD', '');
-        DEFINE('BD', 'bdtigres');
-
-        $resultado = mysqli_connect(SERVIDOR, USUARIO, PASSWORD, BD);
-
-        retirm $resultado;
-    }
 ?>

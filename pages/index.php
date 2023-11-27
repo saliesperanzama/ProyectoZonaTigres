@@ -1,5 +1,25 @@
 <?php
     include('includes/encabezado.php');
+    // Incluye el archivo que contiene la función
+    require "includes/sql.php";
+
+    // Consultar
+    // $idConsulta = 2;
+    // $resultados = consultaPrueba($idConsulta);
+    // print_r($resultados);
+
+    // Registrar
+    // registraPrueba("Hola");
+
+    // Editar
+    // $idConsulta = 3;
+    // $nuevoMensaje = "Adiós";
+    // editaPrueba($idConsulta,$nuevoMensaje);
+
+    // Borrar
+    // $idConsulta = 2;
+    // eliminaPrueba($idConsulta);
+    
 ?>
         <section class="flex items-center justify-center h-full">
             <div class="w-auto h-auto flex flex-col justify-center items-center mx-auto">
