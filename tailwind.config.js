@@ -13,7 +13,10 @@ module.exports = {
 				naranjam: "#F0803F",
 				naranjab: "#F17D25",
 				azul: "#1B396A"
-			}
+			},
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+      }
     },
   },
   plugins: [],

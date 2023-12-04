@@ -1,5 +1,9 @@
 <?php
     include('includes/encabezado2.php');
+    include('includes/utilerias.php');
+    // if(!isset($_SESSION['usuario_id'])){
+    //     redireccionar2('Prohibido','index.php');
+    // }
 ?>          
             <section>
                 <div class="flex flex-wrap justify-evenly h-full items-center mt-4">

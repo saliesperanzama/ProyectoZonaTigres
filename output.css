@@ -1,4 +1,4 @@
-/*
+/* /*
 ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
@@ -6,7 +6,6 @@
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
-
 *,
 ::before,
 ::after {
@@ -59,9 +58,13 @@ html {
 
 body {
   margin: 0;
-  /* 1 */
+
   line-height: inherit;
-  /* 2 */
+
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*
@@ -109,16 +112,16 @@ Reset links to optimize for opt-in styling instead of opt-out.
 a {
   color: inherit;
   text-decoration: inherit;
-}
+} 
 
 /*
 Add the correct font weight in Edge and Safari.
 */
 
-b,
+/* b,
 strong {
   font-weight: bolder;
-}
+} */
 
 /*
 1. Use the user's configured `mono` font family by default.
@@ -130,9 +133,9 @@ kbd,
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
+
   font-size: 1em;
-  /* 2 */
+
 }
 
 /*
@@ -170,12 +173,9 @@ sup {
 */
 
 table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
+  /* text-indent: 0; */
+  border-color: #343A40; 
+  border-collapse: collapse; 
 }
 
 /*
@@ -184,56 +184,56 @@ table {
 3. Remove default padding in all browsers.
 */
 
-button,
+/* button,
 input,
 optgroup,
 select,
 textarea {
   font-family: inherit;
-  /* 1 */
+
   font-feature-settings: inherit;
-  /* 1 */
+
   font-variation-settings: inherit;
-  /* 1 */
+
   font-size: 100%;
-  /* 1 */
+
   font-weight: inherit;
-  /* 1 */
+
   line-height: inherit;
-  /* 1 */
+
   color: inherit;
-  /* 1 */
+
   margin: 0;
-  /* 2 */
+
   padding: 0;
-  /* 3 */
-}
+
+} */
 
 /*
 Remove the inheritance of text transform in Edge and Firefox.
 */
-
+/* 
 button,
 select {
   text-transform: none;
-}
+} */
 
 /*
 1. Correct the inability to style clickable types in iOS and Safari.
 2. Remove default button styles.
 */
 
-button,
+/* button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
-  /* 1 */
+
   background-color: transparent;
-  /* 2 */
+
   background-image: none;
-  /* 2 */
-}
+
+} */
 
 /*
 Use the modern Firefox focus style for all focusable elements.
@@ -312,7 +312,7 @@ summary {
 Removes the default spacing and border for appropriate elements.
 */
 
-blockquote,
+/* blockquote,
 dl,
 dd,
 h1,
@@ -326,7 +326,7 @@ figure,
 p,
 pre {
   margin: 0;
-}
+} */
 
 fieldset {
   margin: 0;
@@ -404,7 +404,7 @@ Make sure disabled buttons don't get the pointer cursor.
    This can trigger a poorly considered lint error in some tools but is included by design.
 */
 
-img,
+/* img,
 svg,
 video,
 canvas,
@@ -414,19 +414,19 @@ embed,
 object {
   display: block;
   /* 1 */
-  vertical-align: middle;
+  /* vertical-align: middle; */
   /* 2 */
-}
+/* }  */
 
 /*
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
 */
 
-img,
+/* img,
 video {
   max-width: 100%;
   height: auto;
-}
+} */
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
@@ -2639,4 +2639,4 @@ video {
       paint-order: markers;
     }
   }
-}
+} */

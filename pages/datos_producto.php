@@ -32,7 +32,7 @@
                         <script>
                             document.getElementById('enviar').addEventListener('click', function() {
                                 alert('Los datos fueron enviados con éxito. Cuando tu producto sea validado se te notificará.');
-                                window.location.href = '/productos';
+                                window.location.href = '../pages/productos.php';
                                 return false;                          
                             });
                         </script>
