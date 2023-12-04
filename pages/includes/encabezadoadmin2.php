@@ -38,7 +38,7 @@
                         <a href="./admin/resenias.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Reseñas</li>
                         </a>
-                        <a href="./index.php">
+                        <a href="./admin/salir.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Cerrar Sesión</li>
                         </a>
                     </ul>

@@ -21,7 +21,8 @@
             //VERIFICAR QUE COINCIDAN LAS CREDENCIALES
             if($numero_control == $no_de_control && $nip == $nip2 ){
                 // Guardar información en la sesión
-                    $_SESSION['usuario_id'] = $row['idusuarios'];
+                    $_SESSION['usuario_id']   = $row['idusuarios'];
+                    $_SESSION['usuario_tipo'] = $tipo_usuario;
                 if($tipo_usuario == "ADMIN"){
                     redireccionar('Bienvenido(a) Administrador ' . $nombre,'administrar.php');
                 }else{
