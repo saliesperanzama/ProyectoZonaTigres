@@ -1,5 +1,13 @@
 <?php
     include('includes/encabezado2.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] == "ADMIN"){
+            header('Location: administrar.php');
+        }
+    }else{
+        header('Location: index.php');
+    }
 ?>
     <section>
                 <div class="flex items-center justify-center flex-col">

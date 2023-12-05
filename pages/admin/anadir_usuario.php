@@ -1,5 +1,13 @@
 <?php 
     include ('../includes/encabezadoadmin.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] != "ADMIN"){
+            header('Location: ../index.php');
+        }
+    }else{
+        header('Location: ../index.php');
+    }
 ?>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">

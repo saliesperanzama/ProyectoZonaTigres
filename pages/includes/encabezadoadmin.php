@@ -21,7 +21,7 @@
                         <a href="../admin/estudiantes.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Estudiantes</li>
                         </a>
-                        <a href="../index.php">
+                        <a href="../admin/solicitudes.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Solicitudes</li>
                         </a>
                         <a href="../admin/productos.php">
@@ -39,7 +39,7 @@
                         <a href="../admin/resenias.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Reseñas</li>
                         </a>
-                        <a href="../index.php">
+                        <a href="../cerrarsesion.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Cerrar Sesión</li>
                         </a>
                     </ul>

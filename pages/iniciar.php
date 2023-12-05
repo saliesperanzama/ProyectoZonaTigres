@@ -1,5 +1,11 @@
 <?php
     include('includes/encabezado.php');
+	session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] == "ADMIN"){
+            header('Location: administrar.php');
+        }
+    }
 ?>
 	<script src="includes/js/iniciar.js"></script>
         <section class="flex items-center justify-center h-full">

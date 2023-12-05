@@ -11,11 +11,11 @@
         }
         //Verificación de Estudiante
         if ($_SESSION['usuario_tipo'] == "EST"){
-            header('Location: index.php');
+            header('Location: productos.php');
         }
         //Verificación de Vendedor
-        if ($_SESSION['usuario_tipo'] == "EST"){
-            header('Location: index_vendedor.php');
+        if ($_SESSION['usuario_tipo'] == "EMP"){
+            header('Location: productos.php');
         }
     }
 ?>

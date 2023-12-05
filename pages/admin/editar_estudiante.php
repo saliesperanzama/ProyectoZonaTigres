@@ -2,6 +2,14 @@
     include ('../includes/utilerias.php');
     include ('../includes/sql.php');
     include ('../includes/encabezadoadmin.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] != "ADMIN"){
+            header('Location: ../index.php');
+        }
+    }else{
+        header('Location: ../index.php');
+    }
     $idestudiante = $_GET['id'];
     $consulta = "SELECT * FROM estudiantes WHERE idestudiantes = $idestudiante";
     $res = ejecutar_sql($consulta);

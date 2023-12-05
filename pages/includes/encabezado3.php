@@ -23,7 +23,7 @@
                         <a href="./emprender.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Emprende</li>
                         </a>
-                        <a href="./index.php?logout=true">
+                        <a href="./cerrarsesion.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Cerrar Sesión</li>
                         </a>
                     </ul>

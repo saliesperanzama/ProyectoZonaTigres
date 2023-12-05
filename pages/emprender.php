@@ -1,5 +1,13 @@
 <?php
     include('includes/encabezado3.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] == "ADMIN"){
+            header('Location: administrar.php');
+        }
+    }else{
+        header('Location: index.php');
+    }
 ?>
 
 <section class="flex flex-row items-center h-full w-full justify-around">
@@ -8,13 +16,13 @@
                     <br>
                     <p class="text-blanco text-justify" style="font-size: 3rem; line-height: 1;">Si tienes un producto que te gustaria ofrecer a la comunidad, rellena los siguientes datos personales, para despúes, colocar los datos de tu producto.</p>
                 </div>
-               
                 <div class="bg-negro p-8 rounded-lg shadow-lg bg-opacity-40 w-1/3 mr-60">
                     <h1 class="text-2xl font-semibold text-blanco mb-4 text-center">Ingresar Datos</h1>
-                    <form action="emprender-manejo.php" method="post">
+                    <form action="emprender-manejo.php" method="post" enctype="multipart/form-data">
                         <div class="mb-4">
-                            <label for="foto" class="block text-blanco font-medium mb-2">Foto de tu crendencial de estudiante:</label>
-                            <input type="file" id="foto" name="foto" accept="image/*" class="w-full border border-gray-300 rounded-md p-2 text-blanco" required>
+                            <label for="foto" class="block text-blanco font-medium mb-2">Deja que tus compradores te conozcan!</label>
+                            <label for="foto" class="block text-blanco font-medium mb-2">Foto personal:</label>
+                            <input type="file" id="foto" name="foto" class="w-full border border-gray-300 rounded-md p-2 text-blanco" required>
                         </div>
                         <div class="mb-4">
                             <label for="telefono" class="block text-blanco font-medium mb-2">Teléfono:</label>

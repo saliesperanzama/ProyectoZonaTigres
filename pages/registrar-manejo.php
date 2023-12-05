@@ -1,6 +1,14 @@
 <?php
     include('includes/utilerias.php');
     include('includes/sql.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] == "ADMIN"){
+            header('Location: administrar.php');
+        }else{
+			
+		}
+    }
     if(empty($_POST)){
         redireccionar('Prohibido','index.php');
     }
@@ -18,7 +26,7 @@
          if($res_verificar->num_rows!=0){
             $row = $res_verificar->fetch_assoc();
             $id_estudiante = $row['idestudiantes'];
-            echo $id_estudiante;
+            // echo $id_estudiante;
             
             //Verificar si no está registrado
             $verificar_usuario = "SELECT * FROM usuarios WHERE no_de_control = '$numero_control'";

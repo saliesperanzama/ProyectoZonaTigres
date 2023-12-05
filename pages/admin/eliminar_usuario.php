@@ -1,5 +1,13 @@
 <?php 
     include ('../includes/sql.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] != "ADMIN"){
+            header('Location: ../index.php');
+        }
+    }else{
+        header('Location: ../index.php');
+    }
     $idusuario = $_GET['id'];
     echo $idusuario;
     $consulta = "SELECT * FROM usuarios WHERE idusuarios = $idusuario";

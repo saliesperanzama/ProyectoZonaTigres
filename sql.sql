@@ -89,3 +89,18 @@ CREATE TABLE pedidos(
     FOREIGN KEY (fk_idusuarios) REFERENCES usuarios(idusuarios),
     FOREIGN KEY (fk_idproductos) REFERENCES productos(idproductos)
 );
+
+INSERT INTO categoria_productos (nombre) 
+VALUES ('ALIMENTOS'),
+        ('POSTRES'),
+        ('SNACKS'),
+        ('BEBIDAS'),
+        ('BELLEZA'),
+        ('MODA'),
+        ('OTROS');
+
+INSERT INTO categoria_servicios (nombre) 
+VALUES ('ACADEMICOS'),
+        ('TECNOLOGICOS'),
+        ('BELLEZA'),
+        ('OTROS');
