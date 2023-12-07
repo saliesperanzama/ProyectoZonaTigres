@@ -4,10 +4,9 @@
     session_start();
     if(empty($_POST)){
         header('Location: ../index.php');
-    }
-     else{
-         if (isset($_SESSION['usuario.tipo'])){
-             if ($_SESSION['usuario.tipo'] != "ADMIN"){
+    }else{
+         if (isset($_SESSION['usuario_tipo'])){
+             if ($_SESSION['usuario_tipo'] != "ADMIN"){
                  header('Location: ../index.php');
              }else{
                 $numero_control = $_POST['numero_control'];

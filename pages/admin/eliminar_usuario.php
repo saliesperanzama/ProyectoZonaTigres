@@ -9,7 +9,7 @@
         header('Location: ../index.php');
     }
     $idusuario = $_GET['id'];
-    echo $idusuario;
+    // echo $idusuario;
     $consulta = "SELECT * FROM usuarios WHERE idusuarios = $idusuario";
     $res = ejecutar_sql($consulta);
     $row = $res->fetch_assoc();

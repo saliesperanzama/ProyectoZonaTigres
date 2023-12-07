@@ -104,3 +104,22 @@ VALUES ('ACADEMICOS'),
         ('TECNOLOGICOS'),
         ('BELLEZA'),
         ('OTROS');
+
+--CONSULTA
+SELECT S.nombre, S.descripcion, S.precio, S.img_servicio, S.estatus, E.telefono, E.img_personal, U.nombre, U.apellido_paterno, U.apellido_materno, C.nombre AS categoria
+FROM servicios S
+LEFT JOIN emprendedor E ON E.idemprendedor = S.fk_idemprendedor
+LEFT JOIN usuarios U ON U.idusuarios = E.fk_idusuarios
+LEFT JOIN categoria_servicios C ON C.idcategoria_servicios = S.fk_idcategoria_servicios
+WHERE C.idcategoria_servicios = 1
+AND S.estatus= 'V';
+
+
+--consulta 2
+SELECT S.nombre, S.descripcion, S.precio, S.img_servicio, S.estatus, E.telefono, C.nombre AS categoria
+FROM servicios S
+LEFT JOIN emprendedor E ON E.idemprendedor = S.fk_idemprendedor
+LEFT JOIN usuarios U ON U.idusuarios = E.fk_idusuarios
+LEFT JOIN categoria_servicios C ON C.idcategoria_servicios = S.fk_idcategoria_servicios
+WHERE C.idcategoria_servicios = 1
+AND S.estatus= 'V';

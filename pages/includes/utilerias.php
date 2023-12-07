@@ -50,13 +50,31 @@
         $extension = strtolower(end($nombre_y_ext));
 
         if(!in_array($extension, $extensiones)){
-            echo 'Archivo no válido';
-            return null;
+            ?>
+            <script>
+                alert('Emprendedor no guardado. Archivo no válido');
+                window.location.href = './emprender.php';
+            </script>
+        <?php
+        // echo 'Archivo no válido';
+        return null;
         }else if($error > 0){
-            echo 'Error al cargar archivo';
+            ?>
+                <script>
+                    alert('Emprendedor no guardado. Error al cargar archivo');
+                    window.location.href = './emprender.php';
+                </script>
+            <?php
+            // echo 'Error al cargar archivo';
             return null;
         }else if($tam > 1000000){
-            echo 'Archivo demasiado grande (Máx 1MB)';
+            ?>
+                <script>
+                    alert('Emprendedor no guardado. Archivo demasiado grande (Máx 1MB)');
+                    window.location.href = './emprender.php';
+                </script>
+            <?php
+            // echo 'Archivo demasiado grande (Máx 1MB)';
             return null;
         }else{
             $nombre_nuevo = uniqid('', true) . '.' . $extension;
@@ -85,7 +103,7 @@
         if(!in_array($extension, $extensiones)){
             ?>
                 <script>
-                    alert('Archivo no válido');
+                    alert('Servicio no guardado. Archivo no válido');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -94,7 +112,7 @@
         }else if($error > 0){
             ?>
                 <script>
-                    alert('Error al cargar archivo');
+                    alert('Servicio no guardado. Error al cargar archivo');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -103,7 +121,7 @@
         }else if($tam > 1000000){
             ?>
                 <script>
-                    alert('Archivo demasiado grande (Máx 1MB)');
+                    alert('Servicio no guardado. Archivo demasiado grande (Máx 1MB)');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -136,7 +154,7 @@
         if(!in_array($extension, $extensiones)){
             ?>
                 <script>
-                    alert('Archivo no válido');
+                    alert('Producto no guardado. Archivo no válido');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -145,7 +163,7 @@
         }else if($error > 0){
             ?>
                 <script>
-                    alert('Error al cargar archivo');
+                    alert('Producto no guardado. Error al cargar archivo');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -154,7 +172,7 @@
         }else if($tam > 1000000){
             ?>
                 <script>
-                    alert('Archivo demasiado grande (Máx 1MB)');
+                    alert('Producto no guardado. Archivo demasiado grande (Máx 1MB)');
                     window.location.href = './datos_producto.php';
                 </script>
             <?php
@@ -164,7 +182,107 @@
             $nombre_nuevo = uniqid('', true) . '.' . $extension;
             $destino = '../public/productos/' . $nombre_nuevo;
             move_uploaded_file($origen, $destino);
+            return $destino;
+        }
+    }
 
+    function subir_imagen_servicio2($archivo){
+        if(empty($archivo)){
+            return null;
+        }
+        $nombre = $archivo['name'];
+        $origen = $archivo['tmp_name'];
+        $tam = $archivo['size'];
+        $tipo = $archivo['type'];
+        $error = $archivo['error'];
+
+        $extensiones = array('jpg', 'jpeg', 'png');
+
+        $nombre_y_ext = explode('.', $nombre);
+        $extension = strtolower(end($nombre_y_ext));
+
+        if(!in_array($extension, $extensiones)){
+            ?>
+                <script>
+                    alert('Servicio no guardado. Archivo no válido');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Archivo no válido';
+            return null;
+        }else if($error > 0){
+            ?>
+                <script>
+                    alert('Servicio no guardado. Error al cargar archivo');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Error al cargar archivo';
+            return null;
+        }else if($tam > 1000000){
+            ?>
+                <script>
+                    alert('Servicio no guardado. Archivo demasiado grande (Máx 1MB)');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Archivo demasiado grande (Máx 1MB)';
+            return null;
+        }else{
+            $nombre_nuevo = uniqid('', true) . '.' . $extension;
+            $destino = '../../public/servicios/' . $nombre_nuevo;
+            move_uploaded_file($origen, $destino);
+
+            return $destino;
+        }
+    }
+
+    function subir_imagen_producto2($archivo){
+        if(empty($archivo)){
+            return null;
+        }
+        $nombre = $archivo['name'];
+        $origen = $archivo['tmp_name'];
+        $tam = $archivo['size'];
+        $tipo = $archivo['type'];
+        $error = $archivo['error'];
+
+        $extensiones = array('jpg', 'jpeg', 'png');
+
+        $nombre_y_ext = explode('.', $nombre);
+        $extension = strtolower(end($nombre_y_ext));
+
+        if(!in_array($extension, $extensiones)){
+            ?>
+                <script>
+                    alert('Producto no guardado. Archivo no válido');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Archivo no válido';
+            return null;
+        }else if($error > 0){
+            ?>
+                <script>
+                    alert('Producto no guardado. Error al cargar archivo');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Error al cargar archivo';
+            return null;
+        }else if($tam > 1000000){
+            ?>
+                <script>
+                    alert('Producto no guardado. Archivo demasiado grande (Máx 1MB)');
+                    window.location.href = './anadir_producto.php';
+                </script>
+            <?php
+            // echo 'Archivo demasiado grande (Máx 1MB)';
+            return null;
+        }else{
+            $nombre_nuevo = uniqid('', true) . '.' . $extension;
+            $destino = '../../public/productos/' . $nombre_nuevo;
+            move_uploaded_file($origen, $destino);
             return $destino;
         }
     }
