@@ -1,7 +1,7 @@
 <?php
     include('includes/encabezado3.php');
-    include('includes/sql.php');
-    session_start();
+    // include('includes/sql.php');
+    // session_start();
     if (isset($_SESSION['usuario_tipo'])){
         if ($_SESSION['usuario_tipo'] == "ADMIN"){
             header('Location: administrar.php');

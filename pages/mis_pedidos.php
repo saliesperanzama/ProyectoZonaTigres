@@ -1,33 +1,38 @@
-<?php 
-    include ('../includes/encabezadoadmin.php');
-    include ('../includes/sql.php');
-    session_start();
+<?php
+    include('includes/encabezado2.php');
+    // include('includes/sql.php');
+    // session_start();
     if (isset($_SESSION['usuario_tipo'])){
-        if ($_SESSION['usuario_tipo'] != "ADMIN"){
-            header('Location: ../index.php');
+        if ($_SESSION['usuario_tipo'] == "ADMIN"){
+            header('Location: administrar.php');
         }
     }else{
-        header('Location: ../index.php');
+        header('Location: index.php');
     }
 
     function tabla_pedidos(){
-        $qry_pedidos = "SELECT * FROM pedidos";
+        $idusuario = $_SESSION['usuario_id'];
+        $qry_pedidos = "SELECT P.idpedidos, P.cantidad, P.total, P.estatus, P.telefono, P.fecha_entrega, P.estatus, U.nombre, U.apellido_paterno, PR.nombre AS nombre_producto
+                        FROM pedidos P
+                        LEFT JOIN usuarios U ON U.idusuarios = P.fk_idusuarios
+                        LEFT JOIN productos PR ON PR.idproductos = P.fk_idproductos
+                        WHERE P.fk_idusuarios = $idusuario";
         $res_pedidos = ejecutar_sql($qry_pedidos);
 
         if ($res_pedidos->num_rows == 0) {
-            $tabla_servicios = '<h1 class="font-bold" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">No hay pedidos</h1>';
+            $tabla_servicios = '<h1 class="font-bold" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">No tienes pedidos</h1>';
         }else{
             $tabla_servicios = '<br>';
             // $tabla_servicios .= '<h1 class="text-negro font-bold text-xl">Servicios</h1>';
             $tabla_servicios .= '<table class="w-auto text-sm text-left text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700  style="border-collapse: collapse; border-width: 5px;">';
             $tabla_servicios .= '<thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">';
             $tabla_servicios .= '<tr class="text-center">';
-            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">ID</th>';
+            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Producto</th>';
+            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Fecha Entrega</th>';
             $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Cantidad</th>';
             $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Total</th>';
-            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Fecha Entrega</th>';
             $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Estatus</th>';
-            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Eliminar</th>';
+            $tabla_servicios .= '<th scope="col" class="text-blanco px-6 py-3 border border-gray-300 dark:border-gray-700" style="background-color: rgb(113 113 122 / var(--tw-bg-opacity));">Cancelar</th>';
             $tabla_servicios .= '</tr>';
             $tabla_servicios .= '</thead>';
             $tabla_servicios .= '<tbody>';
@@ -45,12 +50,12 @@
                 }
 
                 $tabla_servicios .= '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
-                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["idpedidos"] . '</td>';
-                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["cantidad"] . '</td>';
-                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' .'$'. $row["total"] . '</td>';
+                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["nombre_producto"] . '</td>';
                 $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["fecha_entrega"] . '</td>';
+                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["cantidad"] . '</td>';
+                $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' .'$'. $row["total"] . '</td>';   
                 $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $estatus . '</td>';
-                $tabla_servicios .= '<td class="px-6 py-4 border border-gray-300 dark:border-gray-700 text-center" ><a style="cursor: pointer;" href="./eliminar_pedido.php?id=' . $row["idpedidos"] . '"><h1 class="font-bold text-red" style="--tw-text-opacity: 1; color: rgb(185 28 28 / var(--tw-text-opacity));">Eliminar</h1></a></td>';
+                $tabla_servicios .= '<td class="px-6 py-4 border border-gray-300 dark:border-gray-700 text-center" ><a style="cursor: pointer;" href="./cancelar_pedido.php?id=' . $row["idpedidos"] . '"><h1 class="font-bold text-green" style="--tw-text-opacity: 1; color: rgb(22 163 74 / var(--tw-text-opacity));">Cancelar</h1></a></td>';
                 $tabla_servicios .= '</tr>';
             }
             $tabla_servicios .= '</tbody>';
@@ -63,7 +68,7 @@
 
     <section class="flex flex-col items-center justify-center w-full h-full">
         <div class="w-full h-auto mt-6 mb-6 text-center flex flex-col items-center justify-center">       
-        <h1 class="font-bold text-xl" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">Tablas de servicios</h1>
+        <h1 class="font-bold text-xl" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">Tabla de pedidos</h1>
         <?php
                 echo tabla_pedidos();
             ?>
@@ -74,5 +79,5 @@
 </main>
 
 <?php
-    include('../includes/pieadmin.php');
+    include('includes/pie.php');
 ?>

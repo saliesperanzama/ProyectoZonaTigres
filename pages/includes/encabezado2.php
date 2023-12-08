@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <main class="w-full h-auto bg-cover bg-crema">
@@ -24,6 +25,38 @@
                         <a href="./emprender.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Emprende</li>
                         </a>
+                        <?php
+                            include ("includes/sql.php");
+                            session_start();
+                            if ($_SESSION['usuario_tipo'] == "EMP"){
+                                $id = $_SESSION['usuario_id'];
+                                $qry_id_emp = "SELECT * 
+                                            FROM pedidos P
+                                            LEFT JOIN productos PR ON PR.idproductos = P.fk_idproductos
+                                            LEFT JOIN emprendedor E ON E.idemprendedor = PR.fk_idemprendedor
+                                            LEFT JOIN usuarios U ON U.idusuarios = E.fk_idusuarios
+                                            WHERE E.fk_idusuarios = $id
+                                            AND (P.estatus = 'S' OR P.estatus = 'A')";
+                                $res_id = ejecutar_sql($qry_id_emp);
+                                if($res_id->num_rows > 0){
+                                    echo '<a href="./notificaciones.php">';
+                                    echo '<li class="font-medium text-xl hover:border-b-[1.5px] hover:text-rojo border-rojo" style="--tw-text-opacity: 1; color: rgb(255 0 0 / var(--tw-text-opacity)); --tw-border-opacity: 1; border-color: rgb(255 0 0 / var(--tw-border-opacity));">Pedidos</li>';
+                                    echo '</a>';
+                                }else{
+                                    echo '<a href="./notificaciones.php">';
+                                    echo '<li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Pedidos</li>';
+                                    echo '</a>';
+                                }
+                                echo '<a href="./mis_pedidos.php">';
+                                echo '<li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Mis pedidos</li>';
+                                echo '</a>';
+                            }else if($_SESSION['usuario_tipo'] == "EST"){
+                                echo '<a href="./mis_pedidos.php">';
+                                echo '<li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Mis pedidos</li>';
+                                echo '</a>';
+                            }
+                        ?>
+                        
                         <a href="./cerrarsesion.php">
                             <li class="text-blanco font-medium text-xl hover:border-b-[1.5px] hover:text-blanco border-blanco">Cerrar Sesión</li>
                         </a>

@@ -12,7 +12,8 @@ module.exports = {
 				naranja: "#FF5000",
 				naranjam: "#F0803F",
 				naranjab: "#F17D25",
-				azul: "#1B396A"
+				azul: "#1B396A",
+        rojo: "#FF0000",
 			},
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],

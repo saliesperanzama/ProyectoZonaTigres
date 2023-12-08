@@ -1,6 +1,6 @@
 <?php 
     include('includes/encabezado3.php');
-    session_start();
+    // session_start();
     if (isset($_SESSION['usuario_tipo'])){
         if ($_SESSION['usuario_tipo'] == "ADMIN"){
             header('Location: administrar.php');
@@ -47,7 +47,7 @@
                         <label for="categoriaProducto" class="block text-blanco font-medium mb-2">Categoría de Producto:</label>
                         <select id="categoriaProducto" name="categoriaProducto" class="w-full border border-gray-300 rounded-md p-2">
                             <?php 
-                                include('includes/sql.php');
+                                // include('includes/sql.php');
                                 $qry_cat_prod = "SELECT * FROM categoria_productos";
                                 $res_cat_prod = ejecutar_sql($qry_cat_prod);
 

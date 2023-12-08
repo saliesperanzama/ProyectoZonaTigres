@@ -1,7 +1,7 @@
 <?php 
     include('includes/encabezado2.php');
-    include('includes/sql.php');
-    session_start();
+    // include('includes/sql.php');
+    // session_start();
     if (isset($_SESSION['usuario_tipo'])){
         if ($_SESSION['usuario_tipo'] == "ADMIN"){
             header('Location: administrar.php');
@@ -9,8 +9,8 @@
     }else{
         header('Location: index.php');
     }
-    $idproducto = $_GET['id'];
-    $consulta = "SELECT * FROM productos WHERE idproductos = $idproducto";
+    $id = $_GET['id'];
+    $consulta = "SELECT * FROM productos WHERE idproductos = $id";
     $res = ejecutar_sql($consulta);
     $row = $res->fetch_assoc();
     $nombre = $row['nombre'];
@@ -23,7 +23,7 @@
 <section class="flex flex-row items-center h-full w-full justify-around">
                 <div class="mt-8 bg-negro p-8 rounded-lg shadow-lg bg-opacity-40" style="width: 40%; margin-top: 50px; margin-bottom: 50px;">
                   <h1 class="font-semibold text-blanco mb-4 text-center">Actualiza Los Datos del Producto o Servicio</h1>
-                <form action="actualizar_producto-manejo.php" method="post" enctype="multipart/form-data">
+                <form action="editar_producto-manejo.php" method="post" enctype="multipart/form-data">
                     <div class="mb-4">
                         <label for="foto" class="block text-blanco font-medium mb-2">Foto del producto/servicio:</label>
                         <input type="file" id="foto" name="foto" class="w-full border border-gray-300 rounded-md p-2 text-blanco" required>
@@ -99,6 +99,7 @@
                         </select>
                     </div>
                     <div class="text-center">
+                        <input type="hidden" name="id" value="<?php echo $id ?>">
                         <input value="Actualizar" id="Actualizar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
                     </div>
 

@@ -69,7 +69,9 @@ CREATE TABLE resenia_servicios(
     comentario VARCHAR(100),
     calificacion INTEGER,
     fk_idservicios INTEGER,
-    FOREIGN KEY (fk_idservicios) REFERENCES servicios(idservicios)
+    fk_idusuarios INTEGER,
+    FOREIGN KEY (fk_idservicios) REFERENCES servicios(idservicios),
+    FOREIGN KEY (fk_idusuarios) REFERENCES usuarios(idusuarios)
 );
 --TABLA 9
 CREATE TABLE resenia_productos(
@@ -77,13 +79,17 @@ CREATE TABLE resenia_productos(
     comentario VARCHAR(100),
     calificacion INTEGER,
     fk_idproductos INTEGER,
-    FOREIGN KEY (fk_idproductos) REFERENCES productos(idproductos)  
+    fk_idusuarios INTEGER,
+    FOREIGN KEY (fk_idproductos) REFERENCES productos(idproductos),
+    FOREIGN KEY (fk_idusuarios) REFERENCES usuarios(idusuarios) 
 );
 --TABLA 10
 CREATE TABLE pedidos(
     idpedidos INTEGER PRIMARY KEY AUTO_INCREMENT UNIQUE,
     cantidad INTEGER,
     total DECIMAL(10,2),
+    telefono VARCHAR(11),
+    fecha_entrega DATE,
     fk_idusuarios INTEGER,
     fk_idproductos INTEGER,
     FOREIGN KEY (fk_idusuarios) REFERENCES usuarios(idusuarios),

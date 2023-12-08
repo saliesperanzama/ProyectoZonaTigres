@@ -1,7 +1,7 @@
 <?php
     include('includes/encabezado2.php');
-    include('includes/sql.php');
-    session_start();
+    // include('includes/sql.php');
+    // session_start();
     if (isset($_SESSION['usuario_tipo'])){
         if ($_SESSION['usuario_tipo'] == "ADMIN"){
             header('Location: administrar.php');
@@ -9,7 +9,6 @@
     }else{
         header('Location: index.php');
     }
-    
 
     function mostrarServicios_emprendedor(){
         $idusuario = $_SESSION['usuario_id'];
@@ -44,7 +43,7 @@
                 }
                 $tabla.= '<div class="bg-blanco w-96 h-auto rounded-md m-11 shadow-md flex flex-col items-center justify-center">';
                 $tabla.= '<div class="mt-4 w-80 flex items-center justify-center" style="height: 320px">';
-                $tabla.= '<img src="'.$imagen.'" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px"/>';
+                $tabla.= '<img src="'.$imagen.'" alt="Imagen No Disponible" class="w-80 mt-4 rounded-md" style="height: 320px; object-fit: cover"/>';
                 $tabla.= '</div>';
                 $tabla.= '<div class="flex flex-col justify-center mx-8">';
                 $tabla.= '<h1 class="font-semibold mb-2 text-center mt-2">'.$nombre.'</h1>';
