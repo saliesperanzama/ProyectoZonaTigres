@@ -2,6 +2,14 @@
     include ('../includes/encabezadoadmin.php');
     //incluir sql.php
     include ('../includes/sql.php');
+    session_start();
+    if (isset($_SESSION['usuario_tipo'])){
+        if ($_SESSION['usuario_tipo'] != "ADMIN"){
+            header('Location: ../index.php');
+        }
+    }else{
+        header('Location: ../index.php');
+    }
     function tabla(){
         $qry_usuarios = "SELECT * FROM usuarios";
         $res_usuarios = ejecutar_sql($qry_usuarios);

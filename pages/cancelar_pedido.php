@@ -43,6 +43,13 @@
                             window.location.href = './mis_pedidos.php';
                         </script>
                     <?php
+                    }else if ($estatus == "V"){
+                        ?>
+                        <script>
+                            alert('Este pedido ya vencio');
+                            window.location.href = './mis_pedidos.php';
+                        </script>
+                    <?php
                     }else{
                         $qry_updt = "UPDATE pedidos SET estatus = 'C'
                             WHERE idpedidos = $idservicio";

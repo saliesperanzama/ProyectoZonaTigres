@@ -23,7 +23,7 @@ CREATE TABLE usuarios(
 CREATE TABLE emprendedor(
     idemprendedor INTEGER PRIMARY KEY AUTO_INCREMENT UNIQUE,
     telefono VARCHAR(10),
-    img_crendecial VARCHAR(1024),
+    img_personal VARCHAR(1024),
     fk_idusuarios INTEGER,
     FOREIGN KEY (fk_idusuarios) REFERENCES usuarios(idusuarios)
 );

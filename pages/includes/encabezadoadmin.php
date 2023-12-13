@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="w-full bg-cover bg-crema">
+<main class="w-full bg-cover bg-crema" style="min-height: 90vh;">
             <div class="w-screen h-full bg-gradient-to-t from-azul to-blue-950">
                 <nav class="container mx-auto flex flex-row items-center justify-between">
                     <img src="../../public/imgs/logo.png" alt="logo" class="w-32 my-3 mr-10">

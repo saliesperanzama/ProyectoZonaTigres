@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="w-full h-[850px] bg-cover pt-8" style="background-image: url('../public/imgs/tec.png');">
+<main class="w-full h-[850px] bg-cover pt-8" style="background-image: url('../public/imgs/tec.png'); min-height: 90vh;">
                 <nav class="container mx-auto flex justify-between items-center">
                     <img src="../public/imgs/logo.png" alt="logo" class="w-32 ">
                     <ul class="flex gap-16 text-gris">

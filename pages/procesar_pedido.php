@@ -21,7 +21,8 @@
                 $verificar_pedido = "SELECT * FROM pedidos 
                                     WHERE fk_idproductos = $id
                                     AND fecha_entrega = '$fecha'
-                                    AND fk_idusuarios = $idusuario";
+                                    AND fk_idusuarios = $idusuario
+                                    AND estatus = 'S'";
                 $res_verificar = ejecutar_sql($verificar_pedido);
 
                 if($res_verificar->num_rows > 0){
@@ -32,7 +33,23 @@
                         </script>
                     <?php
                 }else{
-                    $insertar = "INSERT INTO pedidos (fk_idproductos, cantidad, total, fecha_entrega, fk_idusuarios, estatus, telefono)
+
+                    //VERIFICAR QUE NO HAYA CANCELADO UN PEDIDO PARA ESA FEHCA
+                    $verificar_pedido2 = "SELECT * FROM pedidos 
+                                    WHERE fk_idproductos = $id
+                                    AND fecha_entrega = '$fecha'
+                                    AND fk_idusuarios = $idusuario
+                                    AND estatus = 'C'";
+                    $res_verificar2 = ejecutar_sql($verificar_pedido2);
+                    if($res_verificar2->num_rows > 0){
+                        ?>
+                            <script>
+                                alert('Has cancelado un pedido para esta fecha, no puedes solicitar otro');
+                                window.location.href = '../pages/productos.php';
+                            </script>
+                        <?php
+                    }else{
+                        $insertar = "INSERT INTO pedidos (fk_idproductos, cantidad, total, fecha_entrega, fk_idusuarios, estatus, telefono)
                                 VALUES ($id, $cantidad, $total, '$fecha', $idusuario, 'S', '$telefono')";
                     $ejecutar = ejecutar_sql($insertar);
                     if($ejecutar){
@@ -49,6 +66,7 @@
                                 window.location.href = '../pages/productos.php';
                             </script>
                         <?php
+                    }
                     }
                 }
             }

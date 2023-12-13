@@ -42,8 +42,10 @@
             $tabla_servicios .= '</thead>';
             $tabla_servicios .= '<tbody>';
 
+            $fechaActual = date('Y-m-d');
             while($row = $res_pedidos->fetch_assoc()){
                 $estatus = $row["estatus"];
+                $fechaEntrega = $row["fecha_entrega"];
                 if($estatus == "S"){
                     $estatus = "Solicitado";
                 }else if($estatus == "A"){
@@ -52,6 +54,13 @@
                     $estatus = "Rechazado";
                 }else if($estatus == "E"){
                     $estatus = "Entregado";
+                }else{
+                    $estatus = "Cancelado";
+                }
+                if(strtotime($fechaEntrega) <= strtotime($fechaActual)){
+                    $qry_updt = "UPDATE pedidos SET estatus = 'V' WHERE idpedidos = " . $row["idpedidos"];
+                    ejecutar_sql($qry_updt);
+                    $estatus = "Vencido";
                 }
 
                 $tabla_servicios .= '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';

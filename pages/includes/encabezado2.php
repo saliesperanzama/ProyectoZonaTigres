@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<main class="w-full h-auto bg-cover bg-crema">
+<main class="w-full h-auto bg-cover bg-crema" style="min-height: 90vh;">
             <div class="w-screen h-full bg-gradient-to-t from-azul to-blue-950">
                 <nav class="container mx-auto flex justify-between items-center">
                     <img src="../public/imgs/logo.png" alt="logo" class="w-32 my-3">

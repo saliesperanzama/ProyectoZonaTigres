@@ -83,6 +83,7 @@
                     </div>
                     <div class="text-center">
                         <input value="Enviar" id="enviar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
+                        <button class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja"><a href="productos.php">Cancelar</a></button>
                     </div>
 
                     <script>

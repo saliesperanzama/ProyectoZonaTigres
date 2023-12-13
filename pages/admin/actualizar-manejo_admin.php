@@ -22,7 +22,11 @@
                 $row = $res_verificar->fetch_assoc();
                 $id_estudiante = $row['idusuarios'];
                 if($res_verificar->num_rows!=0){
-                    $qry_updt = "UPDATE usuarios 
+                    //VERIFICAR QUE SEA EMPRENDEDOR
+                    $qry_emp = "SELECT * FROM emprendedor WHERE fk_idusuarios = '$id_estudiante'";
+                    $res_emp = ejecutar_sql($qry_emp);
+                    if($res_emp->num_rows!=0){
+                        $qry_updt = "UPDATE usuarios 
                                 SET nombre = '$nombre', 
                                 apellido_paterno = '$apellido_paterno', 
                                 apellido_materno = '$apellido_materno',
@@ -30,22 +34,31 @@
                                 nip = '$nip',
                                 tipo_de_usuario = '$tipo_usuario'
                                 WHERE idusuarios = '$id_estudiante'";
-                    $res_updt = ejecutar_sql($qry_updt);
-                    if($res_updt){
-                        ?>
-                            <script>
-                                alert('Usuario actualizado correctamente!');
-                                window.location.href = './usuarios.php';
-                            </script>
-                        <?php
+                        $res_updt = ejecutar_sql($qry_updt);
+                        if($res_updt){
+                            ?>
+                                <script>
+                                    alert('Usuario actualizado correctamente!');
+                                    window.location.href = './usuarios.php';
+                                </script>
+                            <?php
+                        }else{
+                            ?>
+                                <script>
+                                    alert('No se pudo actualizar el usuario');
+                                    window.location.href = './usuarios.php';
+                                </script>
+                            <?php
+                        }
                     }else{
                         ?>
                             <script>
-                                alert('No se pudo actualizar el usuario');
+                                alert('El usuario debe subir su foto y telefono como emprendedor');
                                 window.location.href = './usuarios.php';
                             </script>
                         <?php
                     }
+                    
                 }else{
                     ?>
                         <script>

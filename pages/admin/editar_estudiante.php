@@ -35,6 +35,7 @@
                 <input type="hidden" name="idestudiante" value="<?php echo $idestudiante ?>">
               <div class="text-center">
                 <input value="Actualizar" id="actualizar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
+                <button class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja"><a href="estudiantes.php">Cancelar</a></button>
               </div>
           </form>
       </div>

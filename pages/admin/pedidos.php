@@ -32,8 +32,10 @@
             $tabla_servicios .= '</thead>';
             $tabla_servicios .= '<tbody>';
 
+            $fechaActual = date('Y-m-d');
             while($row = $res_pedidos->fetch_assoc()){
                 $estatus = $row["estatus"];
+                $fechaEntrega = $row["fecha_entrega"];
                 if($estatus == "S"){
                     $estatus = "Solicitado";
                 }else if($estatus == "A"){
@@ -42,7 +44,15 @@
                     $estatus = "Rechazado";
                 }else if($estatus == "E"){
                     $estatus = "Entregado";
+                }else{
+                    $estatus = "Cancelado";
                 }
+                if(strtotime($fechaEntrega) <= strtotime($fechaActual)){
+                    $qry_updt = "UPDATE pedidos SET estatus = 'V' WHERE idpedidos = " . $row["idpedidos"];
+                    ejecutar_sql($qry_updt);
+                    $estatus = "Vencido";
+                }
+                
 
                 $tabla_servicios .= '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
                 $tabla_servicios .= '<td class="font-semibold px-6 py-4 border border-gray-300 dark:border-gray-700">' . $row["idpedidos"] . '</td>';
@@ -63,7 +73,7 @@
 
     <section class="flex flex-col items-center justify-center w-full h-full">
         <div class="w-full h-auto mt-6 mb-6 text-center flex flex-col items-center justify-center">       
-        <h1 class="font-bold text-xl" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">Tablas de servicios</h1>
+        <h1 class="font-bold text-xl" style="--tw-text-opacity: 1; color: rgb(255 80 0 / var(--tw-text-opacity));">Tablas de pedidos</h1>
         <?php
                 echo tabla_pedidos();
             ?>

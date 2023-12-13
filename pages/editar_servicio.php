@@ -101,6 +101,7 @@
                     <div class="text-center">
                         <input value = "<?php echo $id ?>" type="hidden" id="id" name="id" class="w-full border border-gray-300 rounded-md p-2">
                         <input value="Actualizar" id="Actualizar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
+                        <button class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja"><a href="servicios.php">Cancelar</a></button>
                     </div>
 
                     <script>

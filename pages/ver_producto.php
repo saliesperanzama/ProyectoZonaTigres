@@ -73,7 +73,7 @@
                         WHERE RP.fk_idproductos = $idproducto";
 
         $res_resenas = ejecutar_sql($qry_resenas);
-
+        $calificaciones = '';
         if($res_resenas->num_rows > 0){
             while($row = $res_resenas->fetch_assoc()){
                 $comentario = $row['comentario'];
@@ -103,7 +103,7 @@
                     $calificacion.= '<span class="text-yellow-400">★</span>';
                 }
 
-                $calificaciones = '<div class="mt-4 ml-5">';
+                $calificaciones.= '<div class="mt-4 ml-5">';
                 $calificaciones.= '<h3 class="text-lg font-semibold">'.$nombre.' '.$apellidop.'</h3>';
                 $calificaciones.= '<div class="flex mt-2">';
                 $calificaciones.= $calificacion;

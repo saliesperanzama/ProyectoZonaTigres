@@ -26,6 +26,7 @@
                 </div>
               <div class="text-center">
                 <input value="Registrar" id="registrar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
+                <button class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja"><a href="estudiantes.php">Cancelar</a></button>
               </div>
           </form>
       </div>

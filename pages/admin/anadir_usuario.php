@@ -70,7 +70,8 @@
               </div>
               <div class="text-center">
                 <input value="Registrar" id="registrar" type="submit" class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja">
-              </div>
+                <button class="bg-naranjam text-blanco text-lg py-2 px-4 rounded-md hover:bg-naranja"><a href="usuarios.php">Cancelar</a></button>  
+            </div>
           </form>
       </div>
       </section>

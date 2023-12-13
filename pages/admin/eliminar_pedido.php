@@ -15,15 +15,26 @@
         $row = $res->fetch_assoc();
         
         if ($row) {
-            $qry_delete = "DELETE FROM pedidos WHERE idpedidos = $idservicio";
-            $res_delete = ejecutar_sql($qry_delete);
-            if ($res_delete) {
+            //VERIFICAR QUE EL PEDIDO SEA ENTREGADO O RECHAZADO
+            if ($row['estatus'] == 'E' || $row['estatus'] == 'R' || $row['estatus'] == 'V') {
+                $qry_delete = "DELETE FROM pedidos WHERE idpedidos = $idservicio";
+                $res_delete = ejecutar_sql($qry_delete);
+                if ($res_delete) {
+                    ?>
+                    <script>
+                        alert('Servicio eliminado correctamente!');
+                        window.location.href = './pedidos.php';
+                    </script>
+                <?php
+                }
+            }else{
                 ?>
-                <script>
-                    alert('Servicio eliminado correctamente!');
-                    window.location.href = './pedidos.php';
-                </script>
-            <?php
+                    <script>
+                        alert('No se puede eliminar el pedido');
+                        window.location.href = './pedidos.php';
+                    </script>
+                <?php
             }
+            
         }
 ?>
